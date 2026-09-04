@@ -1,5 +1,7 @@
-import React from 'react';
+import type { ComponentProps } from 'react';
 
-export default function Card() {
-	return <div>Card</div>;
+type CardProps = {} & ComponentProps<'div'>;
+
+export default function Card({ ...props }: CardProps) {
+	return <div {...props} />;
 }

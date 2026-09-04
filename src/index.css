@@ -1,18 +1,59 @@
 @import 'tailwindcss';
 
-@keyframes confetti-fall {
-	0% {
-		transform: translateY(-5vh) rotate(0deg);
-		opacity: 1;
+@layer utilities {
+	@keyframes confetti-fall {
+		0% {
+			transform: translateY(-5vh) rotate(0deg);
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(130vh) rotate(720deg);
+			opacity: 0;
+		}
 	}
-	100% {
-		transform: translateY(130vh) rotate(720deg);
-		opacity: 0;
+
+	.animate-confetti {
+		animation-name: confetti-fall;
+		animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		animation-fill-mode: forwards;
+	}
+
+	.main-section-container {
+		@apply flex-1 mt-28 flex flex-col gap-20 items-center max-w-7xl;
+	}
+
+	body {
+		@apply bg-linear-to-b from-rose-50 from-0% via-white via-50% to-rose-50 to-100%;
 	}
 }
 
-.animate-confetti {
-	animation-name: confetti-fall;
-	animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	animation-fill-mode: forwards;
+@layer components {
+	.button {
+		@apply py-2.5 px-10 text-white text-xl uppercase font-bold cursor-pointer bg-indigo-500 outline-2 outline-rose-200 rounded-sm;
+	}
+
+	.main-layout {
+		@apply w-full min-h-screen flex flex-col items-center;
+	}
+
+	.header-tag-one-style {
+		@apply text-7xl tracking-tight text-rose-900 capitalize text-wrap w-xl text-center leading-20;
+	}
+
+	.paragraph-style {
+		@apply text-2xl uppercase text-center font-bold tracking-wide;
+	}
+
+	.card-style {
+		@apply py-10 px-5 w-lg border-2 border-rose-200 rounded-md shadow-sm flex flex-col gap-5 justify-center items-center bg-rose-50;
+	}
+}
+
+@layer base {
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		width: 100%;
+	}
 }

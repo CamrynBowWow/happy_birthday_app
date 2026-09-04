@@ -1,5 +1,8 @@
-import React from 'react';
+import { type ComponentProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-export default function Button() {
-	return <div>Button</div>;
+type ButtonProps = {} & ComponentProps<'button'>;
+
+export default function Button({ className, ...props }: ButtonProps) {
+	return <button {...props} className={twMerge('button', className)} />;
 }
