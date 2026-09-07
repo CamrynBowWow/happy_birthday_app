@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import GiftBoxConfetti from './GiftBoxConfetti';
 
-export default function GiftBox() {
-	const [isOpen, setIsOpen] = useState(false);
+type GiftBoxProps = {
+	isOpen: boolean;
+	setIsOpen: (value: boolean) => void;
+};
 
+export default function GiftBox({ isOpen, setIsOpen }: GiftBoxProps) {
 	const handleOpen = () => {
-		setIsOpen(!isOpen);
+		setIsOpen(true);
 	};
 	// Other test one code for opening lid
 	// -translate-y-12 -translate-x-54 -rotate-145  opacity-0 duration-2000

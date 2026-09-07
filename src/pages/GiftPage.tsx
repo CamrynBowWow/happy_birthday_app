@@ -1,25 +1,57 @@
+import { useState } from 'react';
 import CustomConfetti from '../components/CustomConfetti';
 import GiftBox from '../components/GiftBox';
+import { twMerge } from 'tailwind-merge';
+import HeaderOneTag from '../components/HeaderOneTag';
+import Paragraph from '../components/Paragraph';
 
 export default function GiftPage() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
-		<section className='min-h-screen flex flex-col items-center justify-center text-center relative'>
-			{/* Custom pure React confetti */}
+		<main className='gift-page-main-layout'>
 			<CustomConfetti key={0} count={450} />
+			<section className='gift-page-section-container'>
+				<div className='gift-page-header-parent-container'>
+					<div className='gift-page-header-child-container'>
+						{!isOpen && (
+							<HeaderOneTag
+								className={twMerge(
+									'gift-page-header-h1-style motion-safe:animate-bounce',
+									isOpen && 'opacity-0',
+								)}
+							>
+								Happy Birthday Maryam Umairah!
+							</HeaderOneTag>
+						)}
+						<HeaderOneTag
+							className={twMerge(
+								'gift-page-header-h1-style opacity-0 transition-all ease-in-out delay-300 duration-1500',
+								isOpen && 'opacity-100',
+							)}
+						>
+							I love you lots my beautiful wife!
+						</HeaderOneTag>
+					</div>
 
-			<h1 className='text-4xl font-extrabold text-pink-600 mb-4 motion-safe:animate-bounce'>
-				Happy Birthday [Girlfriends name]?
-			</h1>
+					<Paragraph className={twMerge('gift-page-header-p-style', isOpen && 'opacity-0')}>
+						I hope you have a great day my love. May the rest of the day be amazing for you?
+					</Paragraph>
+				</div>
 
-			<p className='text-lg text-gray-700 max-w-md mb-8'>
-				I hope you have a great day my love. May the rest of the day be amazing for you?
-			</p>
+				<div>
+					<GiftBox isOpen={isOpen} setIsOpen={setIsOpen} />
 
-			<GiftBox />
-			{/* <div className='bg-white p-8 rounded-2xl shadow-xl border border-pink-100 max-w-sm w-full mb-6 flex flex-col items-center'>
-				<div className='text-6xl mb-4'>🎁</div>
-				<p className='font-semibold text-gray-800 text-xl'>Your Special Surprise</p>
-			</div> */}
-		</section>
+					<Paragraph
+						className={twMerge(
+							'gift-page-click-notification motion-safe:animate-pulse',
+							isOpen && 'opacity-0 motion-safe:animate-none',
+						)}
+					>
+						Click The Present!
+					</Paragraph>
+				</div>
+			</section>
+		</main>
 	);
 }

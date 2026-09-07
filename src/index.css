@@ -25,6 +25,30 @@
 	body {
 		@apply bg-linear-to-b from-rose-50 from-0% via-white via-50% to-rose-50 to-100%;
 	}
+
+	.gift-page-main-layout {
+		@apply max-w-2xl m-auto;
+	}
+
+	.gift-page-section-container {
+		@apply min-h-screen flex flex-col items-center justify-center text-center relative gap-20;
+	}
+
+	.gift-page-header-parent-container {
+		@apply flex flex-col items-center gap-10;
+	}
+
+	.gift-page-header-child-container {
+		@apply flex flex-col h-40 items-center;
+	}
+
+	.gift-page-header-p-style {
+		@apply text-xl tracking-tight text-gray-800 max-w-md transition-all duration-700;
+	}
+
+	.gift-page-click-notification {
+		@apply text-gray-800 text-xs tracking-tight h-4 font-semibold;
+	}
 }
 
 @layer components {
@@ -46,6 +70,10 @@
 
 	.card-style {
 		@apply py-10 px-5 w-lg border-2 border-rose-200 rounded-md shadow-sm flex flex-col gap-5 justify-center items-center bg-rose-50;
+	}
+
+	.gift-page-header-h1-style {
+		@apply text-6xl font-extrabold text-rose-700 capitalize tracking-wide leading-20;
 	}
 }
 
