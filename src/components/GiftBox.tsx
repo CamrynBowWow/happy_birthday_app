@@ -12,32 +12,23 @@ export default function GiftBox({ isOpen, setIsOpen }: GiftBoxProps) {
 	// Other test one code for opening lid
 	// -translate-y-12 -translate-x-54 -rotate-145  opacity-0 duration-2000
 	return (
-		<div
-			onClick={handleOpen}
-			className='flex flex-col items-center justify-center cursor-pointer group relative py-10 select-none'
-		>
-			<div className='relative flex flex-col items-center'>
+		<div onClick={handleOpen} className='gift-box-container group'>
+			<div className='gift-box-child'>
 				<GiftBoxConfetti trigger={isOpen} />
 
 				{/* Top Div: The Lid (with top ribbon accent) */}
-				<div
-					className={`w-44 h-6 bg-red-600 shadow-md z-20 relative flex justify-center items-center transition-all  ease-in-out ${
-						isOpen
-							? '-translate-y-20 -translate-x-46 -rotate-125 opacity-0 duration-2000'
-							: 'group-hover:-translate-y-0.5 group-hover:duration-500 duration-500'
-					}`}
-				>
+				<div className={`gift-box-lid ${isOpen ? 'gift-box-lid-open' : 'gift-box-lid-closed'}`}>
 					{/* Lid Vertical Ribbon */}
-					<div className='w-5 h-full bg-amber-400 shadow-inner' />
+					<div className='gift-box-lid-ribbon' />
 				</div>
 
 				{/* Bottom Div: The Square Base Box */}
-				<div className='w-42 h-36 bg-red-600 rounded-b-sm shadow-2xl relative overflow-hidden flex items-center justify-center z-10'>
+				<div className='gift-box-base-box-container'>
 					{/* Vertical Ribbon (Top to Bottom) */}
-					<div className='absolute top-0 bottom-0 w-5 bg-amber-400 shadow-sm z-10' />
+					<div className='gift-box-base-box-vertical-ribbon gift-box-base-box-ribbon' />
 
 					{/* Horizontal Ribbon (Left to Right) */}
-					<div className='absolute left-0 right-0 h-5 bg-amber-400 shadow-sm z-10' />
+					<div className='gift-box-base-box-horizontal-ribbon gift-box-base-box-ribbon' />
 				</div>
 			</div>
 		</div>

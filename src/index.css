@@ -49,6 +49,46 @@
 	.gift-page-click-notification {
 		@apply text-gray-800 text-xs tracking-tight h-4 font-semibold;
 	}
+
+	.gift-box-container {
+		@apply flex flex-col items-center justify-center cursor-pointer relative py-10 select-none;
+	}
+
+	.gift-box-child {
+		@apply relative flex flex-col items-center;
+	}
+
+	.gift-box-lid {
+		@apply w-44 h-6 bg-red-600 shadow-md z-20 relative flex justify-center items-center transition-all  ease-in-out;
+	}
+
+	.gift-box-lid-open {
+		@apply -translate-y-20 -translate-x-46 -rotate-125 opacity-0 duration-2000;
+	}
+
+	.gift-box-lid-closed {
+		@apply group-hover:-translate-y-0.5 group-hover:duration-500 duration-500;
+	}
+
+	.gift-box-lid-ribbon {
+		@apply w-5 h-full bg-amber-400 shadow-inner;
+	}
+
+	.gift-box-base-box-container {
+		@apply w-42 h-36 bg-red-600 rounded-b-sm shadow-2xl relative overflow-hidden flex items-center justify-center z-10;
+	}
+
+	.gift-box-base-box-vertical-ribbon {
+		@apply top-0 bottom-0 w-5;
+	}
+
+	.gift-box-base-box-horizontal-ribbon {
+		@apply left-0 right-0 h-5;
+	}
+
+	.gift-box-base-box-ribbon {
+		@apply absolute bg-amber-400 shadow-sm z-10;
+	}
 }
 
 @layer components {
