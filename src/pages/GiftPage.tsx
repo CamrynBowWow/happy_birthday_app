@@ -35,7 +35,7 @@ export default function GiftPage() {
 					</div>
 
 					<Paragraph className={twMerge('gift-page-header-p-style', isOpen && 'opacity-0')}>
-						I hope you have a great day my love. May the rest of the day be amazing for you?
+						I hope you have a great day my love. May the rest of the day be amazing for you!
 					</Paragraph>
 				</div>
 
