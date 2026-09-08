@@ -93,7 +93,7 @@
 
 @layer components {
 	.button {
-		@apply py-2.5 px-10 text-white text-xl uppercase font-bold cursor-pointer bg-indigo-500 outline-2 outline-rose-200 rounded-sm;
+		@apply py-2.5 px-10 text-white text-xl uppercase font-bold cursor-pointer outline-2 outline-rose-200 rounded-sm;
 	}
 
 	.main-layout {

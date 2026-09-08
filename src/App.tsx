@@ -31,27 +31,21 @@ function App() {
 			const nextCount = movedCount + 1;
 			setMovedCount(nextCount);
 
-			// Generate random offsets keeping the button inside screen bounds
 			const randomTop = Math.floor(Math.random() * 75 + 15) + '%';
 			const randomLeft = Math.floor(Math.random() * 75 + 15) + '%';
 
 			if (!buttonState && yesButtonRef.current) {
-				//  Get exact current pixel position before it changes to fixed
 				const rect = yesButtonRef.current.getBoundingClientRect();
 
-				// We use center coordinates because of the -translate-x-1/2 -translate-y-1/2 classes
 				const startTop = `${rect.top + rect.height / 2}px`;
 				const startLeft = `${rect.left + rect.width / 2}px`;
 
-				// Lock the button exactly where it is, and DISABLE animation so it doesn't glitch/disappear
 				setButtonState({ top: startTop, left: startLeft, animate: false });
 
-				// Give the browser 50ms to paint the locked position, then move it and ENABLE animation
 				setTimeout(() => {
 					setButtonState({ top: randomTop, left: randomLeft, animate: true });
-				}, 50);
+				}, 5);
 			} else {
-				// Subsequent moves are already fixed, just animate to the new random position
 				setButtonState({ top: randomTop, left: randomLeft, animate: true });
 			}
 		}
@@ -72,17 +66,6 @@ function App() {
 						Click yes if you want to receive your gift
 					</Paragraph>
 					<div className='flex gap-10'>
-						{/* <Button
-							onClick={handleYesClick}
-							onMouseEnter={moveButton}
-							style={buttonPos ? { top: buttonPos.top, left: buttonPos.left } : undefined}
-							className={twMerge(
-								'bg-rose-500 transition-all duration-700 ease-in-out z-50',
-								buttonPos && 'fixed -translate-x-1/2 -translate-y-1/2',
-							)}
-						>
-							yes
-						</Button> */}
 						<Button
 							ref={yesButtonRef}
 							onClick={handleYesClick}
@@ -92,13 +75,12 @@ function App() {
 									? {
 											top: buttonState.top,
 											left: buttonState.left,
-											// Temporarily override Tailwind's transition when locking initial position
 											transition: buttonState.animate ? undefined : 'none',
 										}
 									: undefined
 							}
 							className={twMerge(
-								'bg-rose-500 transition-all duration-700 ease-in-out z-50',
+								'bg-rose-500 transition-all duration-700 ease-in-out z-50 hover:bg-rose-200 hover:outline-rose-500 hover:text-black',
 								buttonState && 'fixed -translate-x-1/2 -translate-y-1/2',
 							)}
 						>
@@ -109,7 +91,7 @@ function App() {
 							<Button
 								onClick={() => setHideNoButton(true)}
 								className={twMerge(
-									'transition-opacity duration-300 ease-out',
+									'transition-all duration-500 ease-out bg-indigo-500 hover:bg-rose-200 hover:outline-indigo-500 hover:text-black',
 									hideNoButton && 'opacity-0 pointer-events-none',
 								)}
 							>
